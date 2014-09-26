@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+
+    <dbname value="basketball" >
+    </dbname>
+
+    <version value="1" >
+    </version>
+
+    <list>
+
+        <mapping class="com.example.realtimebasketball.model.NbaNews" >
+        </mapping>
+
+        <mapping class="com.example.realtimebasketball.model.CbaNews" >
+        </mapping>
+
+        <mapping class="com.example.realtimebasketball.model.Matches" >
+        </mapping>
+
+        <mapping class="com.example.realtimebasketball.model.Dates" >
+        </mapping>
+    </list>
+
+</litepal>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="lightgrey">#4D4D4D</color>
+    <!-- 亮灰色 -->
+    <color name="darkgrey">#333333</color>
+  	<!-- 暗灰色 -->
+</resources>

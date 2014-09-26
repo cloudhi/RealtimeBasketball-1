@@ -1,0 +1,57 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@drawable/shape_news_list_back_normal" >
+
+        <TextView
+            android:id="@+id/main_listview_text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toLeftOf="@+id/main_listview_image"
+            android:maxLines="2"
+            android:text="人民网：中国节假日总量超美英 居全球第33位"
+            android:textColor="#373737"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/main_listview_image"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp" />
+
+        <TextView
+            android:id="@+id/main_listview_text_source"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/main_listview_text_title"
+            android:layout_below="@+id/main_listview_text_title"
+            android:layout_marginTop="5dp"
+            android:text="新华网"
+            android:textColor="#777"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/main_listview_text_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/main_listview_text_source"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/main_listview_text_source"
+            android:text="10小时前"
+            android:textColor="#777"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+</RelativeLayout>
