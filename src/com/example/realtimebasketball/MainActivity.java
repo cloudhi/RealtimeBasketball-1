@@ -18,7 +18,6 @@ import com.example.realtimebasketball.image.ImageLoaderConfig;
 
 public class MainActivity extends FragmentActivity implements OnClickListener {
 
-	private ProgressBar top_refresh;
 	private RelativeLayout rl_nba;
 	private RelativeLayout rl_cba;
 	private RelativeLayout rl_video;
