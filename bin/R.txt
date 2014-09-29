@@ -319,8 +319,8 @@ int id low 0x7f05000c
 int id ltr 0x7f050016
 int id main_listview 0x7f05005f
 int id main_listview_image 0x7f050050
-int id main_listview_text_date 0x7f050052
-int id main_listview_text_source 0x7f050051
+int id main_listview_text_date 0x7f050051
+int id main_listview_text_source 0x7f050052
 int id main_listview_text_title 0x7f05004f
 int id multipleChoice 0x7f05002e
 int id multipleChoiceModal 0x7f05002f

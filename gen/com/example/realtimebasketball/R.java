@@ -1726,8 +1726,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int ltr=0x7f050016;
         public static final int main_listview=0x7f05005f;
         public static final int main_listview_image=0x7f050050;
-        public static final int main_listview_text_date=0x7f050052;
-        public static final int main_listview_text_source=0x7f050051;
+        public static final int main_listview_text_date=0x7f050051;
+        public static final int main_listview_text_source=0x7f050052;
         public static final int main_listview_text_title=0x7f05004f;
         public static final int multipleChoice=0x7f05002e;
         public static final int multipleChoiceModal=0x7f05002f;
