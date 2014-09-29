@@ -106,6 +106,12 @@ public class VideosFragment extends Fragment implements OnScrollListener {
 		manager = new DBNewsListManage();
 		new GetDateListTask().execute(REFREASH);
 
+		// 获取日期集合时弹出进度条
+		if (progressDialog == null) {
+			progressDialog = LoadingDialog.createDialog(getActivity());
+		}
+		progressDialog.show();
+
 		expandableListView.setGroupIndicator(null);
 		expandableListView.setOnGroupClickListener(new OnGroupClickListener() {
 
@@ -249,7 +255,7 @@ public class VideosFragment extends Fragment implements OnScrollListener {
 			default:
 				adapter.notifyDataSetChanged();
 			}
-
+			progressDialog.dismiss();
 		}
 
 	}

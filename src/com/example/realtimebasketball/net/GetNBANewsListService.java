@@ -10,6 +10,7 @@ import org.json.JSONObject;
 
 import com.example.realtimebasketball.model.NbaNews;
 import com.example.realtimebasketball.net.HttpUtil;
+import com.example.realtimebasketball.util.Logger;
 
 public class GetNBANewsListService {
 
@@ -19,6 +20,7 @@ public class GetNBANewsListService {
 			String response = HttpUtil
 					.postAndGetDaet("http://m.baidu.com/news?tn=bdapisearch&word=nba"
 							+ key + "&pn=" + page * 20);
+			Logger.e(response);
 			JSONArray jsonArray = new JSONArray(response);
 			for (int i = 0; i < jsonArray.length(); i++) {
 				JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -30,7 +32,9 @@ public class GetNBANewsListService {
 								|| source.contains("·ï»Ë")
 								|| source.contains("ÐÂÀË")
 								|| source.contains("nba") || source
-									.contains("»¢ÆË"))) {
+									.contains("»¢ÆË") || source
+									.contains("ÍøÒ×")|| source
+									.contains("21CN"))) {
 					NbaNews news = new NbaNews();
 					news.setTitle(jsonObject.getString("title"));
 					news.setSource(jsonObject.getString("author"));

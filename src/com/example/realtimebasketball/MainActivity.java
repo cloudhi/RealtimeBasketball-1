@@ -6,15 +6,12 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.example.realtimebasketball.Constant.Constants;
 import com.example.realtimebasketball.fragment.CbaNewsFragment;
 import com.example.realtimebasketball.fragment.NbaNewsFragment;
 import com.example.realtimebasketball.fragment.VideosFragment;
-import com.example.realtimebasketball.image.ImageLoaderConfig;
 
 public class MainActivity extends FragmentActivity implements OnClickListener {
 
@@ -29,7 +26,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		ImageLoaderConfig.initImageLoader(this, Constants.BASE_IMAGE_CACHE);
 		initview();
 	}
 
