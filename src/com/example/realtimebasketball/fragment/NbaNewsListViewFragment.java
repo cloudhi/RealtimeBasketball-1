@@ -46,7 +46,7 @@ public class NbaNewsListViewFragment extends Fragment implements
 	private static final int TIP_ERROR_NO_NETWORK = 0X112;
 	private static final int TIP_ERROR_SERVER = 0X113;
 	public static final String ToastUtil = null;
-
+	private LoadDatasTask asyntask;
 	/**
 	 *  «∑Ò¡¨Ω”Õ¯¬Á
 	 */
@@ -104,14 +104,14 @@ public class NbaNewsListViewFragment extends Fragment implements
 
 	@Override
 	public void onLoadMore() {
-		// TODO Auto-generated method stub
-		new LoadDatasTask().execute(LOAD_MORE);
+		asyntask = new LoadDatasTask();
+		asyntask.execute(LOAD_MORE);
 	}
 
 	@Override
 	public void onRefresh() {
-		// TODO Auto-generated method stub
-		new LoadDatasTask().execute(LOAD_REFREASH);
+		asyntask = new LoadDatasTask();
+		asyntask.execute(LOAD_REFREASH);
 	}
 
 	/**
@@ -207,6 +207,13 @@ public class NbaNewsListViewFragment extends Fragment implements
 		}
 
 		return -1;
+	}
+
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		asyntask.cancel(true);
 	}
 
 }

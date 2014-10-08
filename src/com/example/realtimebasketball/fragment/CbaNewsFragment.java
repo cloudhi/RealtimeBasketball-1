@@ -55,7 +55,7 @@ public class CbaNewsFragment extends Fragment implements
 	private XListView listView;
 	private CbaNewsAdapter adapter;
 	private List<CbaNews> newss = new ArrayList<CbaNews>();
-
+	private LoadDatasTask asyntask;
 	// µ±Ç°Ò³Êý
 	private int pageNow = 1;
 
@@ -110,13 +110,15 @@ public class CbaNewsFragment extends Fragment implements
 	@Override
 	public void onLoadMore() {
 		// TODO Auto-generated method stub
-		new LoadDatasTask().execute(LOAD_MORE);
+		asyntask = new LoadDatasTask();
+		asyntask.execute(LOAD_MORE);
 	}
 
 	@Override
 	public void onRefresh() {
 		// TODO Auto-generated method stub
-		new LoadDatasTask().execute(LOAD_REFREASH);
+		asyntask = new LoadDatasTask();
+		asyntask.execute(LOAD_REFREASH);
 	}
 
 	/**
@@ -208,6 +210,14 @@ public class CbaNewsFragment extends Fragment implements
 		}
 
 		return -1;
+	}
+
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		Logger.e("asyntask cancle!!!");
+		asyntask.cancel(true);
 	}
 
 }
