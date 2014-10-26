@@ -11,12 +11,12 @@
         android:layout_weight="1"
         layout="@layout/topbar" />
 
-    <FrameLayout
+    <android.support.v4.view.ViewPager
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="8" >
-    </FrameLayout>
+    </android.support.v4.view.ViewPager>
 
     <include
         android:layout_width="match_parent"

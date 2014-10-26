@@ -84,11 +84,21 @@ public class VideosFragment extends Fragment implements OnScrollListener {
 	}
 
 	@Override
+	public void setUserVisibleHint(boolean isVisibleToUser) {
+		// TODO Auto-generated method stub
+		super.setUserVisibleHint(isVisibleToUser);
+		if (isVisibleToUser) {
+			initData();
+		} else {
+
+		}
+	}
+
+	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
 		initView();
-		initData();
 
 	}
 

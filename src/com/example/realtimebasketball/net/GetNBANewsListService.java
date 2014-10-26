@@ -27,7 +27,7 @@ public class GetNBANewsListService {
 				String source = jsonObject.getString("author");
 				String title = jsonObject.getString("title");
 				// 去除部分干扰信息
-				if (!title.contains("视频")
+				if (!title.contains("视频")&&!title.contains("博彩")
 						&& (source.contains("体育") || source.contains("东方")
 								|| source.contains("凤凰")
 								|| source.contains("新浪")

@@ -1,8 +1,15 @@
 package com.example.realtimebasketball;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,6 +28,10 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	private NbaNewsFragment nbaNewsFragment;
 	private CbaNewsFragment cbaNewsFragment;
 	private VideosFragment videosFragment;
+	private List<Fragment> fragmentList;
+	// 退出程序
+	private long mExitTime;
+	private ViewPager mViewPager;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +48,20 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		rl_cba.setOnClickListener(this);
 		rl_video = (RelativeLayout) findViewById(R.id.rl_video);
 		rl_video.setOnClickListener(this);
+		fragmentList = new ArrayList<Fragment>();
+		nbaNewsFragment = new NbaNewsFragment();
+		cbaNewsFragment = new CbaNewsFragment();
+		videosFragment = new VideosFragment();
+		fragmentList.add(nbaNewsFragment);
+		fragmentList.add(cbaNewsFragment);
+		fragmentList.add(videosFragment);
 
-		setTabSelection(0);
+		mViewPager = (ViewPager) findViewById(R.id.container);
+		MyPagerAdapter myPagerAdapter = new MyPagerAdapter(
+				getSupportFragmentManager());
+		mViewPager.setAdapter(myPagerAdapter);
+		mViewPager.setCurrentItem(0);
 	}
-
-	// 退出程序
-	private long mExitTime;
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -70,84 +89,36 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.rl_nba:
-			setTabSelection(0);
+			mViewPager.setCurrentItem(0);
 			break;
 		case R.id.rl_cba:
-			setTabSelection(1);
+			mViewPager.setCurrentItem(1);
 			break;
 		case R.id.rl_video:
-			setTabSelection(2);
+			mViewPager.setCurrentItem(2);
 			break;
 		}
 	}
 
-	/**
-	 * 根据传入的index参数来设置选中的tab页。
-	 * 
-	 * @param index
-	 *            每个tab页对应的下标。0表示nba，1表示cba，2表示视频，
-	 */
-	private void setTabSelection(int index) {
-		// 开启一个Fragment事务
-		FragmentTransaction transaction = getSupportFragmentManager()
-				.beginTransaction();
-		// 先隐藏掉所有的Fragment，以防止有多个Fragment显示在界面上的情况
-		hideFragments(transaction);
-		switch (index) {
-		case 0:
+	class MyPagerAdapter extends FragmentPagerAdapter {
 
-			if (nbaNewsFragment == null) {
-				// 如果nbaNewsFragment为空，则创建一个并添加到界面上
-				nbaNewsFragment = new NbaNewsFragment();
-				transaction.add(R.id.container, nbaNewsFragment);
-			} else {
-				// 如果MessageFragment不为空，则直接将它显示出来
-				transaction.show(nbaNewsFragment);
-			}
-			break;
-		case 1:
-
-			if (cbaNewsFragment == null) {
-				// 如果ContactsFragment为空，则创建一个并添加到界面上
-				cbaNewsFragment = new CbaNewsFragment();
-				transaction.add(R.id.container, cbaNewsFragment);
-			} else {
-				// 如果ContactsFragment不为空，则直接将它显示出来
-				transaction.show(cbaNewsFragment);
-			}
-			break;
-		case 2:
-
-			if (videosFragment == null) {
-				// 如果NewsFragment为空，则创建一个并添加到界面上
-				videosFragment = new VideosFragment();
-				transaction.add(R.id.container, videosFragment);
-			} else {
-				// 如果NewsFragment不为空，则直接将它显示出来
-				transaction.show(videosFragment);
-			}
-			break;
+		public MyPagerAdapter(FragmentManager fm) {
+			super(fm);
+			// TODO Auto-generated constructor stub
 		}
 
-		transaction.commit();
-	}
+		@Override
+		public Fragment getItem(int arg0) {
+			// TODO Auto-generated method stub
+			return fragmentList.get(arg0);
+		}
 
-	/**
-	 * 将所有的Fragment都置为隐藏状态。
-	 * 
-	 * @param transaction
-	 *            用于对Fragment执行操作的事务
-	 */
-	private void hideFragments(FragmentTransaction transaction) {
-		if (nbaNewsFragment != null) {
-			transaction.hide(nbaNewsFragment);
-		}
-		if (cbaNewsFragment != null) {
-			transaction.hide(cbaNewsFragment);
-		}
-		if (videosFragment != null) {
-			transaction.hide(videosFragment);
+		@Override
+		public int getCount() {
+			// TODO Auto-generated method stub
+			return 3;
 		}
 
 	}
+
 }
